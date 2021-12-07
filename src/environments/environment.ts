@@ -4,6 +4,11 @@
 
 export const environment = {
   production: false,
+  baseMexico: 'http://localhost/gers-wordpress/mexico/wp-json/acf/v3',
+  urlMexico:  'http://localhost/gers-wordpress/mexico/wp-json/wp/v2',
+  menuMexico: 'http://localhost/gers-wordpress/mexico/wp-json/menus/v1',
+  domain: 'http://localhost/gers-wordpress',
+  domain_angular: 'http://localhost'
 };
 
 /*

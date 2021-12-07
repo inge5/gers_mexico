@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PagesMxService } from 'src/app/services/pages-mx.service';
+import { Title } from '@angular/platform-browser';
+import { SeoService } from '../../../services/seo.service';
 
 @Component({
   selector: 'app-neplan-mx',
@@ -14,9 +16,17 @@ export class NeplanMxComponent implements OnInit {
   info_data: any = {};
   public activePillIndex:number = 0;
 
-  constructor(private _neplan:PagesMxService) { }
+  constructor(private _neplan:PagesMxService, private titulo: Title, private seo: SeoService) { }
 
   ngOnInit(): void {
+    this.titulo.setTitle('Encuentra en GERS nuestro Software de análisis de sistemas de potencia Licencias en la nube o en la intranet según las necesidades de los usuarios');
+    this.seo.generarTags({
+      titulo: 'Encuentra en GERS nuestro Software de análisis de sistemas de potencia Licencias en la nube o en la intranet según las necesidades de los usuarios',
+      descripcion: 'Con NEPLAN puedes realizar diferentes analisis sobre un concepto modular ofreciendo funcionalidades de vanguardia sobre un entorno grafico',
+      imagen: '',
+      slug: 'neplan',
+      keywords: 'En nuestro editor grafico de NEPLAN podras ver el flujo de carga, la simulación dinamica y el cortocircuito porporcionando calculos de posibles fallas'
+    })
     this._neplan.getNeplan()
       .subscribe((res:any) => {
         this.loader = false;

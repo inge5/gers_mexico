@@ -43,7 +43,7 @@ let APP_ROUTES: Routes = [];
                 { path: 'diseno-e-ingenieria', component: DisenoIngenieriaMxComponent },
                 { path: 'tercerias-y-asesorias', component: TerceriasAsesoriasMxComponent },
                 { path: 'neplan', component: NeplanMxComponent },
-                { path: 'beckwith-electronic', component: BeckwithElectronicMxComponent },
+                // { path: 'beckwith-electronic', component: BeckwithElectronicMxComponent },
                 { path: 'xgslab', component: XgslabMxComponent },
                 { path: 'proyectos', component: ProyectosMxComponent },
                 { path: 'publicaciones', component: PublicacionesMxComponent },

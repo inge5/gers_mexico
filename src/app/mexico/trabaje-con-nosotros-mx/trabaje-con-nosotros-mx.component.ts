@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { VacantesMxService } from 'src/app/services/vacantes-mx.service';
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 declare var $: any;
 
@@ -36,6 +37,10 @@ export class TrabajeConNosotrosMxComponent implements OnInit {
   ngOnInit(): void {
     this.getVacantes();
     this.getCategoriasFiltro();
+  }
+
+  changeFile(file:File){
+    this.usuario.archivo = file[0];
   }
 
   getVacantes() {
@@ -158,11 +163,23 @@ export class TrabajeConNosotrosMxComponent implements OnInit {
   }
 
   formTrabajeNosotros(form) {
+    var paqueteDeDatos = new FormData();
+    paqueteDeDatos.append('archivo', this.usuario.archivo);
+    paqueteDeDatos.append('nombres', this.usuario.nombres);
+    paqueteDeDatos.append('apellidos', this.usuario.apellidos);
+    paqueteDeDatos.append('email', this.usuario.email);
+    paqueteDeDatos.append('telefono', this.usuario.telefono);
+    paqueteDeDatos.append('ubicacion', this.usuario.ubicacion);
+    paqueteDeDatos.append('categoria', this.usuario.categoria);
+    paqueteDeDatos.append('acepto', this.usuario.acepto);
     $.ajax({
-      //url: 'https://pruebasneuro.co/N-1057backgane/wp-content/themes/gane/suscribirse.php',
+      url: `${environment.domain}/wp-content/themes/gers/formulario-vacantes-general-mexico/form-vacantes-general-mexico.php`,
       type: 'POST',
-      data: JSON.stringify(this.usuario),
-      dataType: "json",
+      data: paqueteDeDatos,
+      contentType: false,
+      processData: false,
+      cache: false,
+      // dataType: "json",
       success: function (data) {
 
       }, error: function (error) {

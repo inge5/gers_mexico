@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { VacantesMxService } from 'src/app/services/vacantes-mx.service';
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 declare var $:any;
 
@@ -64,7 +65,7 @@ export class VacanteInternaMxComponent implements OnInit {
       paqueteDeDatos.append('ubicacion', this.interesado.ubicacion);
       paqueteDeDatos.append('acepto', this.interesado.acepto);
       paqueteDeDatos.append('vacante', this.interesado.vacante) ;
-      var destino = "https://gers.com.co/backend/wp-content/themes/gers/formulario-vacante-interna/form-vacante-interna.php"; // El script que va a recibir los campos de formulario.
+      var destino = `${environment.domain}/wp-content/themes/gers/formulario-vacante-interna-mexico/form-vacante-interna-mexico.php`; // El script que va a recibir los campos de formulario.
             /* Se envia el paquete de datos por ajax. */
       $.ajax({
         url: destino,

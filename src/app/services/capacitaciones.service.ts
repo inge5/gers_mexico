@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CapacitacionesService {
 
-  url_mexico: string = "https://gers.com.co/backend/mexico/wp-json/wp/v2";
+  url_mexico: string = `${environment.domain}/mexico/wp-json/wp/v2`;
 
   constructor(private http: HttpClient) {
    }
-//Mexico
-
 getCapacitacionesMexico(){
   return this.http.get(`${this.url_mexico}/capacitaciones`);
 }

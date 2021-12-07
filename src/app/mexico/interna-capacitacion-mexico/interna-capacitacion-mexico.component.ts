@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { CapacitacionesService } from 'src/app/services/capacitaciones.service';
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 declare var $: any;
 
@@ -61,7 +62,7 @@ export class InternaCapacitacionMexicoComponent implements OnInit {
   formTrabajeNosotros(form){
     this.usuario.capacitacion = this.capacitacion.title.rendered;
     $.ajax({
-      url: 'https://gers.com.co/backend/mexico/wp-content/themes/gers/inscripcion.php',
+      url: `${environment.domain}/mexico/wp-content/themes/gers/formulario-inscripcion-mexico/inscripcion-mexico.php`,
       type: 'POST',
       data: JSON.stringify(this.usuario),
       dataType:"json",

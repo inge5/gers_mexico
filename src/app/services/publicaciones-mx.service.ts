@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { GLOBAL } from './global';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class PublicacionesMxService {
 
 
   constructor(private _http: HttpClient, private _router:Router) {
-    this.url = GLOBAL.urlMexico;
+    this.url = environment.urlMexico;
   }
 
   getPublicaciones(): Observable<any>{

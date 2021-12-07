@@ -1,6 +1,8 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { PagesMxService } from 'src/app/services/pages-mx.service';
 import { DomSanitizer, SafeHtml, SafeStyle, SafeScript, SafeUrl, SafeResourceUrl } from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
+import { SeoService } from '../../../services/seo.service';
 
 @Pipe({ name: 'safeHtml'})
 export class SafeHtmlPipe implements PipeTransform  {
@@ -31,9 +33,17 @@ export class SmartGridsMxComponent implements OnInit {
   public activePillIndex:number = 0;
 
 
-  constructor(private _sanitizer: DomSanitizer, private _smartgrid:PagesMxService) { }
+  constructor(private _sanitizer: DomSanitizer, private _smartgrid:PagesMxService, private titulo: Title, private seo: SeoService) { }
 
   ngOnInit(): void {
+    this.titulo.setTitle('Enfocamos nuestros servicios de consultoria hacia el futuro, especializandonos en redes y ciudades inteligentes');
+    this.seo.generarTags({
+      titulo: 'Enfocamos nuestros servicios de consultoria hacia el futuro, especializandonos en redes y ciudades inteligentes',
+      descripcion: 'Modernizamos las redes electricas de una manera que busca mejorar las brechas dentro de tu organización',
+      imagen: '',
+      slug: 'smart-grids',
+      keywords: 'Nos especializamos en movilidad electrica, el manejo de la Big data Internet y contamos con programas de capacitacion y formacion constantes'
+    })
     this._smartgrid.getSmartGrids()
       .subscribe((res:any) => {
         this.loader = false;

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PagesMxService } from 'src/app/services/pages-mx.service';
+import { Title } from '@angular/platform-browser';
+import { PagesMxService } from '../../../services/pages-mx.service';
+import { SeoService } from '../../../services/seo.service';
 
 @Component({
   selector: 'app-planeacion-proyectos-mx',
@@ -11,9 +13,17 @@ export class PlaneacionProyectosMxComponent implements OnInit {
   seccion_1_data: any = {};
   seccion_iconos_data: any[] = [];
 
-  constructor(private _planeacionproyectos:PagesMxService) { }
+  constructor(private _planeacionproyectos:PagesMxService, private titulo: Title, private seo: SeoService) { }
 
   ngOnInit(): void {
+    this.titulo.setTitle('En Gers te ayudamos en tus proyectos a futuro, cuenta con nosotros para tomar las mejores decisiones');
+    this.seo.generarTags({
+      titulo: 'En Gers te ayudamos en tus proyectos a futuro, cuenta con nosotros para tomar las mejores decisiones',
+      descripcion: 'Nuestros proyectos van de la mano con estudios de factibilidad e impacto ambiental que aseguran un resultado beneficioso para todos',
+      imagen: '',
+      slug: 'planeacion-de-proyectos',
+      keywords: 'En gers encuentra tambien ayuda en la estimación de costos y gerencia de proyectos, que esperas para contactarnos'
+    })
     this._planeacionproyectos.getPlaneacionProyectos()
       .subscribe((res:any) => {
         this.loader = false;

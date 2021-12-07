@@ -4,6 +4,8 @@ import { CalendarOptions, FullCalendarComponent } from '@fullcalendar/angular';
 import LocalEs from '@fullcalendar/core/locales/es';
 import * as moment from 'moment';
 import { CapacitacionesService } from 'src/app/services/capacitaciones.service';
+import { Title } from '@angular/platform-browser';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-capacitacion-mexico',
@@ -24,9 +26,17 @@ export class CapacitacionMexicoComponent implements OnInit {
   eventosFiltro: any[];
   capacitacionesFiltroTemp: any[];
 
-  constructor(private capacitacionesS: CapacitacionesService, private router: Router) { }
+  constructor(private capacitacionesS: CapacitacionesService, private router: Router, private titulo: Title, private seo: SeoService) { }
 
   ngOnInit(): void {
+    this.titulo.setTitle('Capacita a tu personal con nuestras charlas educativas, mira las proximas fechas aquí');
+    this.seo.generarTags({
+      titulo: 'Capacita a tu personal con nuestras charlas educativas, mira las proximas fechas aquí',
+      descripcion: 'No dejes de aprender y capacitate en nuestras proximas conferencias',
+      imagen: '',
+      slug: 'capacitaciones',
+      keywords: 'Encuentra en GERS capacitaciones constantes de nuestros ingenieros expertos, no te las pierdas'
+    })
     this.asignarEventos();
     this.getCategoriasFiltro();
     moment.locale('es');

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PagesMxService } from 'src/app/services/pages-mx.service';
+import { Title } from '@angular/platform-browser';
+import { PagesMxService } from '../../../services/pages-mx.service';
+import { SeoService } from '../../../services/seo.service';
 
 @Component({
   selector: 'app-estudios-sistemas-mx',
@@ -15,9 +17,17 @@ export class EstudiosSistemasMxComponent implements OnInit {
   texto_columna_2_data: any = {};
   public activePillIndex:number = 0;
 
-  constructor(private _estudiosistemaselectricos:PagesMxService) { }
+  constructor(private _estudiosistemaselectricos:PagesMxService, private titulo: Title, private seo: SeoService) { }
 
   ngOnInit(): void {
+    this.titulo.setTitle('Nos encargamos de los estudios de sistemas electricos para electrificadoras, plantas industriales, mineras y petroleras Cotiza ahora aquí ');
+    this.seo.generarTags({
+      titulo: 'Nos encargamos de los estudios de sistemas electricos para electrificadoras, plantas industriales, mineras y petroleras Cotiza ahora aquí ',
+      descripcion: 'Nuestro equipo cuenta con personal altamente capacitado para realizar nuestro estudios sistemicos en redes electricas nacionales e internacionales. ',
+      imagen: '',
+      slug: 'estudios-de-sistemas-electricos',
+      keywords: 'Realizamos planeaciones de sistemas electricos y estudios de conexión para proyectos con energias convencionales y no convencionales '
+    })
     this._estudiosistemaselectricos.getEstudioSistemasElectricos()
       .subscribe((res:any) => {
         this.loader = false;

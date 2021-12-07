@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PagesMxService } from 'src/app/services/pages-mx.service';
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 declare var $ : any; 
 
@@ -43,7 +44,7 @@ export class ContactenosMxComponent implements OnInit {
   }
   enviarForm(form) {
     $.ajax({
-      url: 'https://gers.com.co/backend/wp-content/themes/gers/formulario-contacto/form-contactenos.php',
+      url: `${environment.domain}/wp-content/themes/gers/formulario-contacto-mexico/form-contactenos-mexico.php`,
       type: 'POST',
       data: JSON.stringify(this.user),
       dataType:"json",

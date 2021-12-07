@@ -1,6 +1,8 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer, SafeHtml, SafeResourceUrl, SafeScript, SafeStyle, SafeUrl } from '@angular/platform-browser';
 import { HomeMxService } from '../../services/home-mx.service';
+import { Title } from '@angular/platform-browser';
+import { SeoService } from '../../services/seo.service';
 
 @Pipe({ name: 'safeHtml'})
 export class SafeHtmlPipe implements PipeTransform  {
@@ -45,10 +47,18 @@ export class HomeMxComponent implements OnInit {
   equipoTrabajo:any[] = [];
   vacantes:any[] = [];
 
-  constructor(private _sanitizer: DomSanitizer, private _homeService:HomeMxService) { 
+  constructor(private _sanitizer: DomSanitizer, private _homeService:HomeMxService, private titulo: Title, private seo: SeoService) { 
   }
 
   ngOnInit(): void {
+    this.titulo.setTitle('Nuestro mayor compromiso es ofrecer un servicio eficiente y confiable ajustandonos a tus proyectos');
+    this.seo.generarTags({
+      titulo: 'Nuestro mayor compromiso es ofrecer un servicio eficiente y confiable ajustandonos a tus proyectos',
+      descripcion: 'Nuestros servicios de Pruebas, automatizacion y control, diseño e ingenieria y los estudios de sistemas electricos nos han posicionado en el mercado por mas de 30 años',
+      imagen: '',
+      slug: '',
+      keywords: 'Ejecutamos y monitoriamos la calidad de potencia y energia en tus proyectos y sistemas industriales / Encuentra en GERS soluciones confiables'
+    })
     this._homeService.getHome()
       .subscribe((res:any) => {
         this.loader = false;
