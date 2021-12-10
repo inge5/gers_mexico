@@ -60,6 +60,7 @@ export class ContactenosMxComponent implements OnInit {
           }); 
   
         form.reset();
+        this.user.pais = 'México';
         } else {
           Swal.fire('Oops...', 'Algo pasó. Corrige los errores, por favor!', 'error')
         }
