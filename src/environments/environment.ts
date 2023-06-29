@@ -4,11 +4,11 @@
 
 export const environment = {
   production: false,
-  baseMexico: 'http://localhost/gers-wordpress/mexico/wp-json/acf/v3',
-  urlMexico:  'http://localhost/gers-wordpress/mexico/wp-json/wp/v2',
-  menuMexico: 'http://localhost/gers-wordpress/mexico/wp-json/menus/v1',
-  domain: 'http://localhost/gers-wordpress',
-  domain_angular: 'http://localhost'
+  baseMexico: 'https://gers.com.co/backend/mexico/wp-json/acf/v3',
+  urlMexico: 'https://gers.com.co/backend/mexico/wp-json/wp/v2',
+  menuMexico: 'https://gers.com.co/backend/mexico/wp-json/menus/v1',
+  domain: 'https://gers.com.co/backend',
+  domain_angular: 'http://gers.com.mx',
 };
 
 /*

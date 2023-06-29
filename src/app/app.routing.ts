@@ -7,7 +7,7 @@ import { ContactenosMxComponent } from './mexico/contactenos-mx/contactenos-mx.c
 import { PensamientoCorporativoMxComponent } from './mexico/nosotros/pensamiento-corporativo-mx/pensamiento-corporativo-mx.component';
 import { PoliticaGestionIntegralMxComponent } from './mexico/nosotros/politica-gestion-integral-mx/politica-gestion-integral-mx.component';
 import { PruebasAutomatizacionControlMxComponent } from './mexico/servicios/pruebas-automatizacion-control-mx/pruebas-automatizacion-control-mx.component';
-import { SmartGridsMxComponent } from './mexico/servicios/smart-grids-mx/smart-grids-mx.component'
+import { SmartGridsMxComponent } from './mexico/servicios/smart-grids-mx/smart-grids-mx.component';
 import { AnalisisCalidadEnergiaMxComponent } from './mexico/servicios/analisis-calidad-energia-mx/analisis-calidad-energia-mx.component';
 import { PlaneacionProyectosMxComponent } from './mexico/servicios/planeacion-proyectos-mx/planeacion-proyectos-mx.component';
 import { EstudiosSistemasMxComponent } from './mexico/servicios/estudios-sistemas-mx/estudios-sistemas-mx.component';
@@ -24,44 +24,70 @@ import { BuscadorMxComponent } from './mexico/buscador-mx/buscador-mx.component'
 import { TerceriasAsesoriasMxComponent } from './mexico/servicios/tercerias-asesorias-mx/tercerias-asesorias-mx.component';
 import { PublicacionInternaMxComponent } from './mexico/publicaciones-mx/publicacion-interna-mx/publicacion-interna-mx.component';
 
-
 let APP_ROUTES: Routes = [];
-    APP_ROUTES = [
-        {
-            path: '', component: MexicoComponent, children: [
-                { path: '', component: HomeMxComponent },
-                { path: 'capacitaciones', component: CapacitacionMexicoComponent },
-                { path: 'capacitaciones/:id', component: InternaCapacitacionMexicoComponent },
-                { path: 'contactenos', component: ContactenosMxComponent },
-                { path: 'pensamiento-corporativo', component: PensamientoCorporativoMxComponent },
-                { path: 'politica-gestion-integral', component: PoliticaGestionIntegralMxComponent },
-                { path: 'pruebas-automatizacion-y-control', component: PruebasAutomatizacionControlMxComponent },
-                { path: 'smart-grids', component: SmartGridsMxComponent },
-                { path: 'analisis-calidad-energia', component: AnalisisCalidadEnergiaMxComponent },
-                { path: 'planeacion-de-proyectos', component: PlaneacionProyectosMxComponent },
-                { path: 'estudios-de-sistemas-electricos', component: EstudiosSistemasMxComponent },
-                { path: 'diseno-e-ingenieria', component: DisenoIngenieriaMxComponent },
-                { path: 'tercerias-y-asesorias', component: TerceriasAsesoriasMxComponent },
-                { path: 'neplan', component: NeplanMxComponent },
-                // { path: 'beckwith-electronic', component: BeckwithElectronicMxComponent },
-                { path: 'xgslab', component: XgslabMxComponent },
-                { path: 'proyectos', component: ProyectosMxComponent },
-                { path: 'publicaciones', component: PublicacionesMxComponent },
-                { path: 'publicaciones/:slug', component: PublicacionInternaMxComponent },
-                { path: 'trabaje-con-nosotros', component: TrabajeConNosotrosMxComponent },
-                { path: 'vacantes/:slug', component: VacanteInternaMxComponent },
-                { path: 'buscador', component: BuscadorMxComponent },
-                { path: '**', redirectTo: '', pathMatch: 'full' }
-
-            ]
-        },
-        { path: '**', pathMatch: 'full', redirectTo: '' }
-    ]
+APP_ROUTES = [
+  {
+    path: '',
+    component: MexicoComponent,
+    children: [
+      { path: '', component: HomeMxComponent },
+      { path: 'capacitaciones', component: CapacitacionMexicoComponent },
+      {
+        path: 'capacitaciones/:id',
+        component: InternaCapacitacionMexicoComponent,
+      },
+      { path: 'contactenos', component: ContactenosMxComponent },
+      {
+        path: 'pensamiento-corporativo',
+        component: PensamientoCorporativoMxComponent,
+      },
+      {
+        path: 'politica-gestion-integral',
+        component: PoliticaGestionIntegralMxComponent,
+      },
+      {
+        path: 'pruebas-automatizacion-y-control',
+        component: PruebasAutomatizacionControlMxComponent,
+      },
+      { path: 'smart-grids', component: SmartGridsMxComponent },
+      {
+        path: 'analisis-calidad-energia',
+        component: AnalisisCalidadEnergiaMxComponent,
+      },
+      {
+        path: 'planeacion-de-proyectos',
+        component: PlaneacionProyectosMxComponent,
+      },
+      {
+        path: 'estudios-de-sistemas-electricos',
+        component: EstudiosSistemasMxComponent,
+      },
+      { path: 'diseno-e-ingenieria', component: DisenoIngenieriaMxComponent },
+      {
+        path: 'tercerias-y-asesorias',
+        component: TerceriasAsesoriasMxComponent,
+      },
+      { path: 'neplan', component: NeplanMxComponent },
+      // { path: 'beckwith-electronic', component: BeckwithElectronicMxComponent },
+      { path: 'xgslab', component: XgslabMxComponent },
+      { path: 'proyectos', component: ProyectosMxComponent },
+      { path: 'publicaciones', component: PublicacionesMxComponent },
+      { path: 'publicaciones/:slug', component: PublicacionInternaMxComponent },
+      {
+        path: 'trabaje-con-nosotros',
+        component: TrabajeConNosotrosMxComponent,
+      },
+      { path: 'vacantes/:slug', component: VacanteInternaMxComponent },
+      { path: 'buscador', component: BuscadorMxComponent },
+      { path: '**', redirectTo: '', pathMatch: 'full' },
+    ],
+  },
+  { path: '**', pathMatch: 'full', redirectTo: '' },
+];
 
 export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES, {
-    useHash: true,
-    onSameUrlNavigation: "ignore",
-    anchorScrolling: 'enabled',
-    scrollPositionRestoration: 'enabled',
-    initialNavigation: 'enabled'
+  onSameUrlNavigation: 'ignore',
+  anchorScrolling: 'enabled',
+  scrollPositionRestoration: 'enabled',
+  initialNavigation: 'enabled',
 });
