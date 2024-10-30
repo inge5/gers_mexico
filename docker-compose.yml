@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  gers_usa:
+    build: .
+    container_name: gers_usa
+    ports:
+      - "9030:9030"
